@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Verifiable Credentials Demo
 
-## Getting Started
+This is a Next.js 16 app for demonstrating verifiable credential issuance and a placeholder verification flow.
 
-First, run the development server:
+## Local Development
+
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The issuance page reads a single public credential definition from environment variables:
 
-## Learn More
+```bash
+NEXT_PUBLIC_CREDENTIAL_NAME
+NEXT_PUBLIC_CREDENTIAL_DESCRIPTION
+NEXT_PUBLIC_CREDENTIAL_OFFER_URI
+NEXT_PUBLIC_CREDENTIAL_TYPE
+```
 
-To learn more about Next.js, take a look at the following resources:
+Copy `.env.example` to `.env.local` and replace the example values with your actual OID4VCI credential offer data.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+If the variables are missing, the site still builds and the issuance page shows a fallback "No credential configured" state.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Production Build
 
-## Deploy on Vercel
+```bash
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy to Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push this folder to a GitHub repository.
+2. Import the repository into Vercel.
+3. Keep the framework preset as `Next.js`.
+4. Set the project root to the repository root.
+5. Add the four `NEXT_PUBLIC_CREDENTIAL_*` variables in Vercel for Preview and Production.
+6. Deploy `main` to your default `*.vercel.app` domain.
+
+After deployment, verify:
+
+- `/` loads correctly
+- `/issuance` shows the configured credential and QR code
+- `/verification` loads the placeholder verification page
