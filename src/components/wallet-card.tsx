@@ -1,5 +1,12 @@
 import { ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import type { LucideIcon } from "lucide-react";
+
+const colorMap: Record<string, { bg: string; border: string; text: string }> = {
+  blue: { bg: "bg-blue-50", border: "border-blue-200", text: "text-blue-600" },
+  green: { bg: "bg-green-50", border: "border-green-200", text: "text-green-600" },
+  orange: { bg: "bg-wso2-orange/10", border: "border-wso2-orange/20", text: "text-wso2-orange" },
+};
 
 interface WalletCardProps {
   name: string;
@@ -7,6 +14,8 @@ interface WalletCardProps {
   appStoreUrl?: string;
   playStoreUrl?: string;
   websiteUrl?: string;
+  Icon?: LucideIcon;
+  iconColor?: string;
 }
 
 function LinkButton({ href, children }: { href: string; children: React.ReactNode }) {
@@ -22,12 +31,18 @@ function LinkButton({ href, children }: { href: string; children: React.ReactNod
   );
 }
 
-export function WalletCard({ name, description, appStoreUrl, playStoreUrl, websiteUrl }: WalletCardProps) {
+export function WalletCard({ name, description, appStoreUrl, playStoreUrl, websiteUrl, Icon, iconColor = "orange" }: WalletCardProps) {
+  const colors = colorMap[iconColor] ?? colorMap.orange;
+
   return (
-    <Card className="text-center">
+    <Card className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
       <CardContent className="pt-6 space-y-4">
-        <div className="w-16 h-16 mx-auto rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center">
-          <span className="text-gray-700 font-bold text-2xl">{name[0]}</span>
+        <div className={`w-16 h-16 mx-auto rounded-2xl ${colors.bg} border ${colors.border} flex items-center justify-center`}>
+          {Icon ? (
+            <Icon className={`h-7 w-7 ${colors.text}`} />
+          ) : (
+            <span className="text-gray-700 font-bold text-2xl">{name[0]}</span>
+          )}
         </div>
         <div>
           <h3 className="font-semibold text-lg">{name}</h3>

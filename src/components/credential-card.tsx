@@ -14,6 +14,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { QRCodeDisplay } from "@/components/qr-code-display";
@@ -41,7 +42,7 @@ export function CredentialCard({ credential }: { credential: Credential }) {
   };
 
   return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-none overflow-hidden">
+    <div className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm overflow-hidden">
       {/* Two-column layout: info left, QR right */}
       <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:gap-10">
         {/* Left column — credential info */}
@@ -101,9 +102,16 @@ export function CredentialCard({ credential }: { credential: Credential }) {
           </div>
         </div>
 
-        {/* Right column — QR code */}
-        <div className="flex justify-center sm:flex-shrink-0">
-          <QRCodeDisplay value={credential.offerUri} />
+        {/* Right column — QR code with pulsing glow */}
+        <div className="flex justify-center sm:flex-shrink-0 relative">
+          <motion.div
+            className="absolute inset-0 rounded-2xl bg-wso2-orange/10 blur-xl"
+            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <div className="relative rounded-2xl overflow-hidden shadow-sm">
+            <QRCodeDisplay value={credential.offerUri} />
+          </div>
         </div>
       </div>
 

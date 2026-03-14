@@ -1,5 +1,8 @@
+"use client";
+
 import { Credential } from "@/types/credential";
 import { CredentialCard } from "@/components/credential-card";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
 
 interface CredentialsSectionProps {
   credential: Credential | null;
@@ -8,7 +11,7 @@ interface CredentialsSectionProps {
 export function CredentialsSection({ credential }: CredentialsSectionProps) {
   if (!credential) {
     return (
-      <section id="credentials" className="py-20 bg-muted">
+      <section id="credentials" className="py-16 lg:py-20 bg-muted">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <span className="section-pill mb-4">Try It</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
@@ -23,9 +26,9 @@ export function CredentialsSection({ credential }: CredentialsSectionProps) {
   }
 
   return (
-    <section id="credentials" className="py-20 bg-muted">
+    <section id="credentials" className="py-16 lg:py-20 bg-muted">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <ScrollReveal className="text-center mb-12">
           <span className="section-pill mb-4">Try It</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
             Try It <span className="text-wso2-orange">Now</span>
@@ -34,11 +37,11 @@ export function CredentialsSection({ credential }: CredentialsSectionProps) {
             Scan the QR code below with your OID4VCI-compatible wallet to receive a
             verifiable credential. On mobile, tap &quot;Open in Wallet&quot; instead.
           </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="max-w-2xl mx-auto">
+        <ScrollReveal className="max-w-2xl mx-auto" delay={0.2}>
           <CredentialCard credential={credential} />
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

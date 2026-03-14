@@ -18,7 +18,7 @@ export function FooterSection() {
   return (
     <footer className="bg-gray-50 border-t border-gray-200 text-gray-500 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
           <Link href="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-wso2-orange flex items-center justify-center">
               <span className="text-white font-bold text-sm">W</span>
@@ -26,7 +26,7 @@ export function FooterSection() {
             <span className="text-gray-900 font-semibold">Verifiable Credentials</span>
           </Link>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-8">
             {internalLinks.map((link) => (
               <Link
                 key={link.label}
@@ -38,7 +38,7 @@ export function FooterSection() {
             ))}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-8">
             {externalLinks.map((link) => (
               <a
                 key={link.label}

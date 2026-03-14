@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const landingLinks = [
@@ -14,7 +15,6 @@ const landingLinks = [
 
 const issuanceLinks = [
   { label: "OID4VCI", href: "#what-is-oid4vci", isHash: true },
-  { label: "How It Works", href: "#how-it-works", isHash: true },
   { label: "Try It", href: "#credentials", isHash: true },
   { label: "Wallets", href: "#wallets", isHash: true },
 ];
@@ -103,33 +103,41 @@ export function Navbar() {
         </div>
       </div>
 
-      {mobileOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200/60">
-          <div className="px-4 py-3 space-y-1">
-            {navLinks.map((link) =>
-              link.isHash ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuPath(null)}
-                  className="block px-3 py-2 text-sm text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuPath(null)}
-                  className="block px-3 py-2 text-sm text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md"
-                >
-                  {link.label}
-                </Link>
-              ),
-            )}
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200/60 overflow-hidden"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+          >
+            <div className="px-4 py-3 space-y-1">
+              {navLinks.map((link) =>
+                link.isHash ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileMenuPath(null)}
+                    className="block px-3 py-2 text-sm text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileMenuPath(null)}
+                    className="block px-3 py-2 text-sm text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md"
+                  >
+                    {link.label}
+                  </Link>
+                ),
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

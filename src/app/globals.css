@@ -107,8 +107,41 @@
 
 @layer components {
   .section-pill {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-500;
+    @apply inline-flex items-center gap-1.5 rounded-full border border-wso2-orange/20 bg-wso2-orange/5 px-3 py-1 text-xs font-medium text-wso2-orange;
   }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-gray-200/60 shadow-sm;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes float-3d {
+  0%, 100% {
+    transform: translateY(0) rotateX(25deg) rotateY(-15deg) rotateZ(5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateX(28deg) rotateY(-12deg) rotateZ(3deg);
+  }
+}
+
+.animate-float-3d {
+  animation: float-3d 40s ease-in-out infinite;
+}
+
+@keyframes edge-flow {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+.animate-edge {
+  animation: edge-flow 3s linear infinite;
 }
 
 .dot-grid-bg {
