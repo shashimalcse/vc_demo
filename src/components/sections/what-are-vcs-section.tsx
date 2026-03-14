@@ -71,21 +71,21 @@ function AnimatedTrustTriangle() {
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
-          {/* Verifier to Holder */}
+          {/* Issuer to Holder */}
           <line
-            x1="25" y1="20" x2="75" y2="20"
+            x1="50" y1="70" x2="75" y2="20"
+            stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2,2"
+            className="animate-edge"
+          />
+          {/* Holder to Verifier */}
+          <line
+            x1="75" y1="20" x2="25" y2="20"
             stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2,2"
             className="animate-edge"
           />
           {/* Verifier to Issuer */}
           <line
             x1="25" y1="20" x2="50" y2="70"
-            stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2,2"
-            className="animate-edge"
-          />
-          {/* Holder to Issuer */}
-          <line
-            x1="75" y1="20" x2="50" y2="70"
             stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2,2"
             className="animate-edge"
           />
@@ -178,9 +178,9 @@ function TrustTriangleStatic() {
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
         >
-          <line x1="25" y1="20" x2="75" y2="20" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2,2" />
+          <line x1="50" y1="70" x2="75" y2="20" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2,2" />
+          <line x1="75" y1="20" x2="25" y2="20" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2,2" />
           <line x1="25" y1="20" x2="50" y2="70" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2,2" />
-          <line x1="75" y1="20" x2="50" y2="70" stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="2,2" />
         </svg>
 
         {/* Verifier Node — top left */}
