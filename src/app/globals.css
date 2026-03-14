@@ -134,14 +134,29 @@
   animation: float-3d 40s ease-in-out infinite;
 }
 
-@keyframes edge-flow {
-  to {
-    stroke-dashoffset: -8;
-  }
+.animate-edge-base {
+  stroke: #e2e8f0;
+  stroke-width: 1;
+  fill: none;
 }
 
-.animate-edge {
-  animation: edge-flow 3s linear infinite;
+.electric-pulse {
+  stroke: #f97316;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 12 88;
+  fill: none;
+  animation: electric-travel 4s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(249, 115, 22, 1)) drop-shadow(0 0 12px rgba(249, 115, 22, 0.6));
+}
+
+@keyframes electric-travel {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .dot-grid-bg {
