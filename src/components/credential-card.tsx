@@ -109,7 +109,7 @@ export function CredentialCard({ credential }: { credential: Credential }) {
             animate={{ opacity: [0.3, 0.6, 0.3] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
-          <div className="relative rounded-2xl overflow-hidden shadow-sm">
+          <div className="relative rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white">
             <QRCodeDisplay value={credential.offerUri} />
           </div>
         </div>

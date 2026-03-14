@@ -9,7 +9,7 @@ interface QRCodeDisplayProps {
 
 export function QRCodeDisplay({ value, size = 256 }: QRCodeDisplayProps) {
   return (
-    <div className="bg-gray-50 border border-gray-200 p-4 rounded-xl inline-block">
+    <div className="bg-white p-4 rounded-xl inline-block">
       <QRCode
         value={value}
         size={size}
